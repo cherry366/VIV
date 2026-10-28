@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIV健康平台App · 产品经理项目展示</title>
+<style>
+:root{
+  --brand:#008C6A; --brand-dark:#006B51; --brand-light:#E6F5F1;
+  --ink:#1F2937; --ink-2:#5B6472; --bg:#F7FAF9; --card:#FFFFFF;
+  --line:#E3EAE8; --accent:#FF8A3D; --radius:16px;
+  --shadow:0 6px 24px rgba(0,60,45,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;color:var(--ink);background:var(--bg);line-height:1.7}
+img{max-width:100%;display:block}
+
+/* ---------- nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:99;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:60px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--brand);font-size:17px}
+.logo .dot{width:12px;height:12px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 4px var(--brand-light)}
+.nav-links{display:flex;gap:22px;font-size:14px}
+.nav-links a{color:var(--ink-2);text-decoration:none;padding:6px 2px;border-bottom:2px solid transparent;transition:.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--brand);border-color:var(--brand)}
+@media(max-width:860px){.nav-links{display:none}}
+
+/* ---------- layout ---------- */
+main{max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:84px 0 20px}
+.kicker{display:inline-block;font-size:13px;font-weight:700;letter-spacing:2px;color:var(--brand);background:var(--brand-light);padding:4px 14px;border-radius:999px;margin-bottom:14px}
+h2{font-size:30px;margin-bottom:10px}
+.sub{color:var(--ink-2);max-width:720px;margin-bottom:36px}
+
+/* ---------- hero ---------- */
+.hero{padding-top:150px;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero h1{font-size:44px;line-height:1.25;margin:18px 0 16px}
+.hero h1 em{font-style:normal;color:var(--brand)}
+.hero p.desc{color:var(--ink-2);font-size:16px;max-width:520px}
+.tags{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0}
+.tag{font-size:13px;padding:6px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:var(--ink-2)}
+.hero-metrics{display:flex;gap:34px;margin-top:34px}
+.hm b{display:block;font-size:30px;color:var(--brand)}
+.hm span{font-size:13px;color:var(--ink-2)}
+.hero-img{position:relative}
+.hero-img .frame{border-radius:24px;overflow:hidden;box-shadow:0 24px 60px rgba(0,80,60,.18);border:1px solid var(--line)}
+.hero-img .float{position:absolute;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:14px;padding:10px 16px;font-size:13px;display:flex;align-items:center;gap:8px;animation:floaty 4s ease-in-out infinite}
+.hero-img .f1{top:8%;left:-30px}
+.hero-img .f2{bottom:14%;right:-24px;animation-delay:1.4s}
+.hero-img .float .ic{width:26px;height:26px;border-radius:8px;background:var(--brand-light);display:grid;place-items:center;color:var(--brand);font-weight:700}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media(max-width:860px){.hero{grid-template-columns:1fr}.hero h1{font-size:32px}}
+
+/* ---------- cards ---------- */
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:860px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow);transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(0,60,45,.12)}
+.card h3{font-size:17px;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.card p{font-size:14px;color:var(--ink-2)}
+.num-ic{width:34px;height:34px;border-radius:10px;background:var(--brand-light);color:var(--brand);display:grid;place-items:center;font-weight:800;font-size:15px;flex:none}
+
+/* ---------- pain / goal ---------- */
+.pain{border-left:4px solid var(--accent)}
+.pain .num-ic{background:#FFF1E6;color:var(--accent)}
+
+/* ---------- persona ---------- */
+.persona .avatar{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-size:22px;background:var(--brand-light);margin-bottom:12px}
+.persona .need{margin-top:10px;font-size:13px;color:var(--brand);background:var(--brand-light);border-radius:10px;padding:8px 12px}
+
+/* ---------- flow ---------- */
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;counter-reset:step}
+@media(max-width:860px){.flow{grid-template-columns:1fr}}
+.step{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px 18px;box-shadow:var(--shadow)}
+.step::before{counter-increment:step;content:counter(step);position:absolute;top:-14px;left:16px;width:28px;height:28px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:14px;font-weight:700}
+.step h4{font-size:15px;margin:6px 0 6px}
+.step p{font-size:13px;color:var(--ink-2)}
+.step .sla{margin-top:10px;font-size:12px;color:var(--brand);border-top:1px dashed var(--line);padding-top:8px}
+
+/* ---------- IA ---------- */
+.ia-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.ia-tab{padding:8px 18px;border-radius:999px;background:var(--card);border:1px solid var(--line);cursor:pointer;font-size:14px;color:var(--ink-2);transition:.2s}
+.ia-tab.on{background:var(--brand);border-color:var(--brand);color:#fff}
+.ia-panel{display:none;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow)}
+.ia-panel.on{display:block}
+.ia-panel ul{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(max-width:860px){.ia-panel ul{grid-template-columns:1fr}}
+.ia-panel li{font-size:14px;color:var(--ink-2);padding-left:22px;position:relative}
+.ia-panel li::before{content:"";position:absolute;left:0;top:9px;width:10px;height:10px;border-radius:3px;background:var(--brand-light);border:2px solid var(--brand)}
+.pri{font-size:11px;font-weight:700;padding:1px 8px;border-radius:999px;margin-left:8px}
+.p0{background:#E6F5F1;color:#008C6A}.p1{background:#FFF1E6;color:#D97A2B}.p2{background:#EEF1FF;color:#5B6BD9}
+
+/* ---------- metrics ---------- */
+.metric-card{ text-align:center}
+.metric-card b{display:block;font-size:34px;color:var(--brand);margin-bottom:2px}
+.metric-card span{font-size:13px;color:var(--ink-2)}
+.bar{height:8px;border-radius:99px;background:var(--brand-light);margin-top:12px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--brand),#3CC7A5);width:0;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.funnel{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.funnel .fr{display:flex;align-items:center;gap:14px;font-size:13px}
+.funnel .fr .fb{height:34px;border-radius:8px;background:linear-gradient(90deg,var(--brand),#43C9A6);display:flex;align-items:center;color:#fff;padding:0 14px;white-space:nowrap;font-weight:600}
+.funnel .fr small{color:var(--ink-2)}
+
+/* ---------- table ---------- */
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);font-size:14px}
+th{background:var(--brand);color:#fff;text-align:left;padding:12px 16px;font-weight:600}
+td{padding:12px 16px;border-bottom:1px solid var(--line);color:var(--ink-2);vertical-align:top}
+tr:last-child td{border-bottom:none}
+td b{color:var(--ink)}
+
+/* ---------- retro ---------- */
+.retro .card{border-top:4px solid var(--brand)}
+.retro .card.bad{border-top-color:var(--accent)}
+
+footer{margin-top:90px;background:var(--ink);color:#C6CDD6;text-align:center;padding:34px 20px;font-size:13px}
+footer b{color:#fff}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo"><span class="dot"></span>VIV健康平台 · 项目展示</div>
+    <div class="nav-links">
+      <a href="#bg">背景</a><a href="#research">用户研究</a><a href="#position">定位目标</a>
+      <a href="#feature">功能方案</a><a href="#flow">核心流程</a><a href="#data">数据指标</a><a href="#result">结果复盘</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <span class="kicker">产品经理项目作品集 · 智能硬件 × 健康</span>
+      <h1>VIV健康平台 App<br>从<em>硬件遥控器</em>到<em>健康管家</em></h1>
+      <p class="desc">负责「VIV」智能按摩设备官方 App 的 0→1 产品定义：以「设备控制 + 健康数据」双核心，打通配对连接、按摩控制、手法商城与健康报告全链路，让硬件价值被持续释放。</p>
+      <div class="tags">
+        <span class="tag"> 角色：产品经理（Owner）</span>
+        <span class="tag">📱 平台：iOS / Android</span>
+        <span class="tag">🔗 蓝牙 BLE / OTA</span>
+        <span class="tag">📊 健康数据产品</span>
+      </div>
+      <div class="hero-metrics">
+        <div class="hm"><b>≥98%</b><span>配对成功率目标</span></div>
+        <div class="hm"><b>45%</b><span>30日留存目标</span></div>
+        <div class="hm"><b>30万</b><span>3个月绑定设备</span></div>
+      </div>
+    </div>
+    <div class="hero-img">
+      <div class="frame"><img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=a%20modern%20smart%20neck%20massager%20device%20on%20a%20clean%20white%20desk%20next%20to%20a%20smartphone%20showing%20a%20green%20health%20app%20interface%2C%20soft%20studio%20lighting%2C%20product%20photography&image_size=portrait_4_3" alt="VIV智能健康设备"></div>
+      <div class="float f1"><span class="ic"></span>蓝牙连接成功 · 电量 82%</div>
+      <div class="float f2"><span class="ic">↑</span>本周按摩时长 +24%</div>
+    </div>
+  </div>
+
+  <!-- 01 背景 -->
+  <section id="bg">
+    <div class="reveal">
+      <span class="kicker">01 · 项目背景</span>
+      <h2>硬件卖出去了，价值却没用起来</h2>
+      <p class="sub">VIV按摩仪出货量持续增长，但设备体验止步于机身按键——参数调节不便、手法单一、用完即走，品牌缺少沉淀用户资产的入口。</p>
+    </div>
+    <div class="grid g3">
+      <div class="card pain reveal"><h3><span class="num-ic">!</span>操作体验差</h3><p>模式、力度、热敷全靠按键盲操作，9 档力度难以精准选择，中老年用户上手成本高。</p></div>
+      <div class="card pain reveal"><h3><span class="num-ic">!</span>内容不更新</h3><p>设备出厂手法固定，买回家三个月后新鲜感耗尽，硬件生命周期价值无法延长。</p></div>
+      <div class="card pain reveal"><h3><span class="num-ic">!</span>数据无沉淀</h3><p>使用行为、身体状态数据全部留在设备端，用户感知不到「坚持使用」的效果，复购与推荐缺乏依据。</p></div>
+    </div>
+    <div class="card reveal" style="margin-top:18px;background:var(--brand-light);border-color:transparent">
+      <h3 style="color:var(--brand)">💡 机会判断</h3>
+      <p style="color:var(--ink)">App 是硬件差异化竞争的关键入口：<b>控制体验升级</b>解决当下痛点，<b>手法商城 + OTA</b> 持续供给内容，<b>健康数据闭环</b>把一次性买家变成留存用户。</p>
+    </div>
+  </section>
+
+  <!-- 02 用户研究 -->
+  <section id="research">
+    <div class="reveal">
+      <span class="kicker">02 · 用户研究</span>
+      <h2>四类人群，一个共同诉求：效果可感知、操作要省心</h2>
+      <p class="sub">基于设备购买人群分析与用户访谈，划分四类核心画像，明确各人群的关键任务与产品切入点。</p>
+    </div>
+    <div class="grid g4">
+      <div class="card persona reveal"><div class="avatar">💼</div><h3>久坐办公族</h3><p>25-40 岁，伏案劳损，数码接受度高</p><div class="need">快速缓解酸痛 · 效果可量化</div></div>
+      <div class="card persona reveal"><div class="avatar">🎧</div><h3>数码养生青年</h3><p>18-30 岁，追求新奇体验与个性化</p><div class="need">丰富手法玩法 · 社交分享</div></div>
+      <div class="card persona reveal"><div class="avatar">🍵</div><h3>中老年养护</h3><p>45-65 岁，慢病调理，子女代购</p><div class="need">大字体易操作 · 家人协助</div></div>
+      <div class="card persona reveal"><div class="avatar">🎁</div><h3>礼赠收礼人群</h3><p>节假日收到设备，无主动学习意愿</p><div class="need">开箱即用 · 引导清晰</div></div>
+    </div>
+    <div class="card reveal" style="margin-top:18px">
+      <h3>🧭 关键洞察</h3>
+      <p>用户访谈中反复出现两类声音——「按键调力度太麻烦」与「不知道按多久才有效」。因此产品必须同时回答 <b>How（更省心的控制）</b> 与 <b>Why（数据证明有效）</b> 两个问题，这直接决定了「设备控制 + 健康数据」的双核心定位。</p>
+    </div>
+  </section>
+
+  <!-- 03 定位与目标 -->
+  <section id="position">
+    <div class="reveal">
+      <span class="kicker">03 · 产品定位与目标</span>
+      <h2>定位：设备控制 + 健康数据的工具型平台</h2>
+      <p class="sub">V1.0 聚焦双核心能力，克制地不做商城交易与社区（列入后续版本），保证首版聚焦与交付质量。</p>
+    </div>
+    <div class="grid g3">
+      <div class="card reveal"><h3><span class="num-ic">1</span>设备遥控器</h3><p>蓝牙接管模式、力度、热敷、时长全部控制能力，指令延迟 ≤300ms，断连自动停机保护。</p></div>
+      <div class="card reveal"><h3><span class="num-ic">2</span>内容供给</h3><p>手法商城持续上新，免费手法下载同步至设备，延长硬件生命周期。</p></div>
+      <div class="card reveal"><h3><span class="num-ic">3</span>健康管家</h3><p>使用记录自动沉淀，趋势图表与周报让「坚持」被看见，驱动持续使用。</p></div>
+    </div>
+    <div class="grid g4" style="margin-top:18px">
+      <div class="card metric-card reveal"><b>30万</b><span>激活绑定设备（3个月）</span><div class="bar"><i data-w="75%"></i></div></div>
+      <div class="card metric-card reveal"><b>≥98%</b><span>设备配对成功率</span><div class="bar"><i data-w="98%"></i></div></div>
+      <div class="card metric-card reveal"><b>≥45%</b><span>绑定用户30日留存</span><div class="bar"><i data-w="45%"></i></div></div>
+      <div class="card metric-card reveal"><b>≥30%</b><span>手法下载渗透率</span><div class="bar"><i data-w="30%"></i></div></div>
+    </div>
+    <div class="card reveal" style="margin-top:18px;background:var(--brand-light);border-color:transparent">
+      <h3 style="color:var(--brand)">⭐ 北极星指标</h3>
+      <p style="color:var(--ink)"><b>周有效按摩设备使用次数</b>（单次 ≥5 分钟计为有效）—— 反映「硬件被真正用起来」这一核心价值，所有功能向其对齐。</p>
+    </div>
+  </section>
+
+  <!-- 04 功能方案 -->
+  <section id="feature">
+    <div class="reveal">
+      <span class="kicker">04 · 功能方案</span>
+      <h2>4 Tab 信息架构，8 大模块分级交付</h2>
+      <p class="sub">首页（设备）承载控制主场景，数据/手法商城构建留存与内容闭环，「我的」兜底账号与合规。P0 保证核心链路，P1/P2 分期迭代。</p>
+    </div>
+    <div class="reveal">
+      <div class="ia-tabs" id="iaTabs">
+        <button class="ia-tab on" data-p="p-home">📱 首页 · 设备</button>
+        <button class="ia-tab" data-p="p-data">📊 数据</button>
+        <button class="ia-tab" data-p="p-mall">🛒 手法商城</button>
+        <button class="ia-tab" data-p="p-me">👤 我的</button>
+      </div>
+      <div class="ia-panel on" id="p-home"><ul>
+        <li>添加设备：蓝牙扫描配对 + 分步引导<span class="pri p0">P0</span></li>
+        <li>设备控制：模式 / 力度 / 热敷 / 时长 / 启停<span class="pri p0">P0</span></li>
+        <li>多设备切换与状态（电量/连接）<span class="pri p0">P0</span></li>
+        <li>断连保护：设备 3s 内自动停机<span class="pri p0">P0</span></li>
+        <li>OTA 固件升级（断点续传/回滚）<span class="pri p1">P1</span></li>
+        <li>设备共享给家人<span class="pri p2">P2</span></li>
+      </ul></div>
+      <div class="ia-panel" id="p-data"><ul>
+        <li>使用记录：时间/时长/模式/力度均值<span class="pri p0">P0</span></li>
+        <li>趋势图表：日/周/月粒度<span class="pri p1">P1</span></li>
+        <li>每周放松报告 + 分享图<span class="pri p1">P1</span></li>
+        <li>身体指标录入（心率等，视机型）<span class="pri p1">P1</span></li>
+        <li>健康档案与个性化推荐<span class="pri p2">P2</span></li>
+        <li>数据导出 / 删除（合规）<span class="pri p1">P1</span></li>
+      </ul></div>
+      <div class="ia-panel" id="p-mall"><ul>
+        <li>手法浏览 / 搜索 / 机型适配标识<span class="pri p1">P1</span></li>
+        <li>手法详情：场景、参数预览、评分<span class="pri p1">P1</span></li>
+        <li>下载并蓝牙同步至设备<span class="pri p1">P1</span></li>
+        <li>「我的手法」一键运行<span class="pri p1">P1</span></li>
+        <li>收藏与已下载管理<span class="pri p2">P2</span></li>
+        <li>每月上新运营排期<span class="pri p2">P2</span></li>
+      </ul></div>
+      <div class="ia-panel" id="p-me"><ul>
+        <li>一键登录 / 验证码登录 / 注销<span class="pri p0">P0</span></li>
+        <li>个人资料与健康档案<span class="pri p1">P1</span></li>
+        <li>定时提醒与消息中心<span class="pri p1">P1</span></li>
+        <li>帮助反馈 + 使用教育<span class="pri p1">P1</span></li>
+        <li>设置与隐私（单独同意）<span class="pri p0">P0</span></li>
+        <li>适老化模式<span class="pri p1">P1</span></li>
+      </ul></div>
+    </div>
+    <div class="reveal" style="margin-top:26px;overflow-x:auto">
+      <table>
+        <tr><th>需求编号</th><th>功能点</th><th>关键规则（节选）</th><th>验收标准</th></tr>
+        <tr><td>FR-DEV-01</td><td><b>添加设备</b></td><td>长按电源键进配对模式 → 扫描列表（名称+RSSI）→ 鉴权绑定</td><td>扫描响应 ≤3s，配对成功率 ≥98%</td></tr>
+        <tr><td>FR-CTL-03</td><td><b>力度调节</b></td><td>滑块+档位双向调节，拖动节流下发（≤5条/s）防指令风暴</td><td>指令回执 ≤500ms，UI 无假状态</td></tr>
+        <tr><td>FR-CTL-04</td><td><b>热敷保护</b></td><td>连续使用超时自动降档提示，防低温烫伤</td><td>双端保护逻辑一致</td></tr>
+        <tr><td>FR-MAL-03</td><td><b>手法同步</b></td><td>云端存储 + 蓝牙分包写入设备，中断断点续传</td><td>同步成功率 ≥98%</td></tr>
+        <tr><td>FR-DAT-01</td><td><b>使用记录</b></td><td>本地缓存优先，断网不丢数据，恢复后按时间戳去重补传</td><td>记录完整率 ≥99%</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- 05 核心流程 -->
+  <section id="flow">
+    <div class="reveal">
+      <span class="kicker">05 · 核心流程</span>
+      <h2>设备配对：15 秒完成从开箱到连接</h2>
+      <p class="sub">配对是硬件 App 的第一生死线。每一步提供明确指引与失败兜底，异常路径全部可自助恢复。</p>
+    </div>
+    <div class="flow reveal">
+      <div class="step"><h4>登录</h4><p>本机号码一键登录，失败自动降级验证码</p><div class="sla">SIM 在线 2s 内完成</div></div>
+      <div class="step"><h4>权限引导</h4><p>检测蓝牙/定位权限，弹窗直达系统设置</p><div class="sla">未授权不阻塞浏览</div></div>
+      <div class="step"><h4>开机配对</h4><p>动图演示长按电源键，进入配对模式</p><div class="sla">广播发现 ≤3s</div></div>
+      <div class="step"><h4>扫描选择</h4><p>设备列表按信号强度排序，配对码防误绑</p><div class="sla">超时30s给排查清单</div></div>
+      <div class="step"><h4>绑定成功</h4><p>建立账号-设备归属，进入控制页+新手教育</p><div class="sla">平均总耗时 ≤15s</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:22px">
+      <div class="card reveal"><h3><span class="num-ic">▶</span>按摩使用闭环</h3><p>选手法 → 调参数 → 开始 → 运行中实时调参 → 到点自动停机 → <b>生成使用记录</b>计入健康数据。息屏/后台不中断，断连设备自动停机保护。</p></div>
+      <div class="card reveal"><h3><span class="num-ic">↻</span>内容消费闭环</h3><p>商城浏览 → 机型兼容校验 → 下载入账号 → 蓝牙同步写入设备 → 控制页一键运行。同步中断记录断点，重连续传；存储满引导清理。</p></div>
+    </div>
+  </section>
+
+  <!-- 06 数据指标 -->
+  <section id="data">
+    <div class="reveal">
+      <span class="kicker">06 · 数据指标体系</span>
+      <h2>AARRR 分层建模，埋点先行</h2>
+      <p class="sub">从获取到推荐逐层设定可量化指标，配对漏斗与新手完成率作为首版重点监控对象。</p>
+    </div>
+    <div class="grid g2">
+      <div class="card reveal">
+        <h3>📉 配对转化漏斗（目标）</h3>
+        <div class="funnel">
+          <div class="fr"><div class="fb" style="width:96%">打开添加设备页</div><small>100%</small></div>
+          <div class="fr"><div class="fb" style="width:82%">蓝牙权限通过</div><small>88%</small></div>
+          <div class="fr"><div class="fb" style="width:70%">扫描到设备</div><small>96%</small></div>
+          <div class="fr"><div class="fb" style="width:56%">发起配对</div><small>92%</small></div>
+          <div class="fr"><div class="fb" style="width:50%">绑定成功</div><small>98%</small></div>
+        </div>
+        <p style="margin-top:12px">端到端成功率 ≥98%；失败原因码全量埋点，驱动协议与引导迭代。</p>
+      </div>
+      <div class="card reveal">
+        <h3>🎯 关键指标看板</h3>
+        <table style="box-shadow:none">
+          <tr><th>层级</th><th>指标</th><th>目标</th></tr>
+          <tr><td>激活</td><td><b>新手完成率</b>（24h内首次≥5min）</td><td>≥70%</td></tr>
+          <tr><td>使用</td><td><b>设备周使用次数</b></td><td>≥4 次</td></tr>
+          <tr><td>使用</td><td><b>App 控制占比</b></td><td>≥60%</td></tr>
+          <tr><td>留存</td><td><b>30 日留存率</b></td><td>≥45%</td></tr>
+          <tr><td>质量</td><td><b>崩溃率 / ANR</b></td><td>≤0.1% / 0.05%</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 结果与复盘 -->
+  <section id="result" class="retro">
+    <div class="reveal">
+      <span class="kicker">07 · 成果与复盘</span>
+      <h2>做对了什么，下次会怎么做</h2>
+    </div>
+    <div class="grid g3">
+      <div class="card reveal"><h3>✅ 结果导向的取舍</h3><p>V1.0 砍掉商城交易与社区，聚焦「连得上、控得好、看得见数据」，首版按期交付且核心指标全部立项对齐。</p></div>
+      <div class="card reveal"><h3>✅ 风险前置设计</h3><p>针对安卓蓝牙碎片化，提前制定厂商白名单 + 保活方案 + 自启动引导，将断连类投诉控制在预期内。</p></div>
+      <div class="card reveal"><h3>✅ 合规即产品</h3><p>健康数据单独同意、分类分级加密、导出删除能力进入 P0/P1，避免上架返工。</p></div>
+      <div class="card bad reveal"><h3>⚠️ 复盘 1：协议依赖</h3><p>控制项动态渲染依赖固件能力协商，早期评估不足导致两轮排期调整。下次硬件联动需求应在概念期锁定协议评审。</p></div>
+      <div class="card bad reveal"><h3>⚠️ 复盘 2：内容冷启动</h3><p>手法商城上线时仅 18 套官方手法，渗透率爬坡慢于预期。内容型功能应与产品同步储备 ≥30 套。</p></div>
+      <div class="card bad reveal"><h3>⚠️ 复盘 3：适老化后置</h3><p>大字体模式列入 P2，但中老年占比超预估。用户画像权重应在评审时用真实购买数据校验。</p></div>
+    </div>
+    <div class="card reveal" style="margin-top:18px;background:var(--brand-light);border-color:transparent">
+      <h3 style="color:var(--brand)">🧰 本项目体现的能力</h3>
+      <p style="color:var(--ink)">硬件×软件跨端需求管理 · 蓝牙协议与 OTA 技术理解 · 数据安全合规设计 · AARRR 指标体系搭建 · 优先级取舍（P0/P1/P2） · 异常路径与风险预案</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <b>VIV健康平台 App · 产品经理项目展示</b><br>
+  项目文档：PRD V1.0（配套交付） · 本页面为作品集展示用途，数据为产品目标口径
+</footer>
+
+<script>
+// reveal on scroll
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');
+    e.target.querySelectorAll('.bar i').forEach(b=>b.style.width=b.dataset.w);
+    io.unobserve(e.target);}
+}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// IA tabs
+document.getElementById('iaTabs').addEventListener('click',ev=>{
+  const btn=ev.target.closest('.ia-tab');if(!btn)return;
+  document.querySelectorAll('.ia-tab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.ia-panel').forEach(p=>p.classList.remove('on'));
+  btn.classList.add('on');document.getElementById(btn.dataset.p).classList.add('on');
+});
+// nav active
+const secs=[...document.querySelectorAll('section[id]')];
+addEventListener('scroll',()=>{
+  const y=scrollY+90;let cur='';
+  secs.forEach(s=>{if(s.offsetTop<=y)cur=s.id});
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+});
+</script>
+</body>
+</html>
