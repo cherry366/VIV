@@ -4,6 +4,8 @@
 
 `平台：iOS / Android`　`连接：BLE 蓝牙 / OTA`　`定位：设备控制 + 健康数据`　`角色：产品经理（Owner）`
 
+**简体中文** | [English](README_EN.md)
+
 ---
 
 ## 一、项目简介
@@ -56,7 +58,8 @@ VIV 健康平台 App 是 VIV 智能按摩设备的官方配套应用。产品以
 VIV/
 ├── index.html                      # 产品经理项目展示页（单文件，无外部依赖）
 ├── VIV健康平台App_PRD_v1.0.docx    # 产品需求文档（PRD）Word 版
-└── README.md                       # 项目说明（本文件）
+├── README.md                       # 项目说明（中文，本文件）
+└── README_EN.md                    # 项目说明（English）
 ```
 
 ---
